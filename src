@@ -1,0 +1,41 @@
+package bhavi.plugin;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.player.PlayerCommandPreprocessEvent;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class MainClass extends JavaPlugin{
+	
+	
+	public void onEnable(){
+		//When server running the server say this-
+		getLogger().info("Warning Running Java 6!");
+		getLogger().info("onEnable has been invoked!");
+		// the } stops this running command
+		}
+	
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
+		if(cmd.getName().equalsIgnoreCase("java")){ // If the player typed /java then do the following...
+			getLogger().info("The server runs the latest Java 6!");
+			getLogger().info("Thank you, please be active on this server");
+			
+			return true;
+		} //If this has happened the function will return true. 
+	        // If this hasn't happened the a value of false will be returned.
+		return false; 
+	//The } under this stops this hole command
+	}
+	@EventHandler
+	public void onCommandUse(PlayerCommandPreprocessEvent e){
+	    if(e.getMessage().startsWith("/lag") || e.getMessage().startsWith("/lag")){
+	        e.getPlayer().kickPlayer("Self-kick active");
+	    }
+	}
+	
+	
+	
+	
+	
+}
